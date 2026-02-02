@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Lolo 💕</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+      font-family: "Comic Sans MS", "Arial", cursive;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ff4d88;
+      font-size: 3em;
+      margin-top: 100px;
+    }
+
+    p {
+      font-size: 1.3em;
+      color: #ff6f9c;
+    }
+
+    button {
+      font-size: 1.3em;
+      padding: 15px 35px;
+      margin: 20px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #yes {
+      background: #ff4d88;
+      color: white;
+    }
+
+    #no {
+      background: #ffc2d6;
+      color: #ff4d88;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+      }
+      to {
+        transform: translateY(-10vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Lolo, will you be my Valentine? 💖</h1>
+  <p>I promise cuddles, snacks, and unlimited smiles 🥰</p>
+
+  <button id="yes" onclick="yesClick()">Yes 💕</button>
+  <button id="no">No 😳</button>
+
+  <script>
+    const noBtn = document.getElementById("no");
+
+    function moveNo() {
+      noBtn.style.left = Math.random() * 80 + "vw";
+      noBtn.style.top = Math.random() * 80 + "vh";
+    }
+
+    // Run away on hover AND when getting close
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("mousedown", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    function yesClick() {
+      document.body.innerHTML = `
+        <h1>YAYYYYY 💖🎉</h1>
+        <p>Lolo said YES 🥹</p>
+        <p>Best Valentine ever 💌</p>
+      `;
+      confetti();
+    }
+
+    function confetti() {
+      for (let i = 0; i < 60; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+      }
+    }
+
+    // Start the No button somewhere random
+    moveNo();
+  </script>
+
+</body>
+</html>
